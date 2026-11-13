@@ -33,6 +33,13 @@ for arg in "$@"; do
 done
 
 cd "$(dirname "$0")"
+
+# Numa pasta com só o compose do Docker Hub (sem docker-compose.yml), usa ele.
+if [ -z "${COMPOSE_FILE:-}" ] && [ ! -f docker-compose.yml ] && [ ! -f compose.yaml ] \
+        && [ -f docker-compose.hub.yml ]; then
+    export COMPOSE_FILE=docker-compose.hub.yml
+fi
+
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 EXEC="r$(date +%s)"   # prefixo dos usuários desta execução
@@ -137,7 +144,41 @@ par_com_assentos() {
 if [ "$REINICIAR" = 1 ]; then
     secao "Subindo o sistema do zero (down -v, up --build --wait)"
     docker compose down -v >/dev/null 2>&1
-    docker compose up -d --build --wait >/dev/null 2>&1 || { echo "o sistema não subiu" >&2; exit 1; }
+    docker compose up -d --build --wait > "$TMP/up.log" 2>&1 || {
+        echo "o sistema não subiu:" >&2; tail -20 "$TMP/up.log" >&2; exit 1
+    }
+fi
+
+# O script fala com o IMDTravel pela porta e com os outros três por `docker compose exec`,
+# que procura os containers do projeto compose desta pasta. Se o sistema no ar foi subido
+# noutra pasta (ou com outro arquivo de compose), a porta responde mas o exec não acha nada.
+PROJETO="$(docker compose config --format json 2>/dev/null | jq -r '.name // empty')"
+[ -n "$PROJETO" ] || {
+    echo "Nenhum arquivo de compose nesta pasta ($(pwd))." >&2
+    echo "Rode o testes.sh na pasta do docker-compose.yml, ou use COMPOSE_FILE=<arquivo>." >&2
+    exit 2
+}
+NO_AR="$(docker compose ps --status running --services 2>/dev/null)"
+FALTAM=""
+for s in imdtravel airlineshub exchange fidelity; do
+    echo "$NO_AR" | grep -qx "$s" || FALTAM="$FALTAM $s"
+done
+if [ -n "$FALTAM" ]; then
+    echo "Serviços do projeto compose '$PROJETO' (pasta $(pwd)) que não estão no ar:$FALTAM" >&2
+    OUTROS="$(docker ps --filter label=com.docker.compose.service=imdtravel \
+        --format '{{.Label "com.docker.compose.project"}}|{{.Label "com.docker.compose.project.working_dir"}}|{{.Label "com.docker.compose.project.config_files"}}' \
+        | grep -v "^$PROJETO|")"
+    if [ -n "$OUTROS" ]; then
+        echo "O IMDTravel no ar é de outro projeto:" >&2
+        echo "$OUTROS" | while IFS='|' read -r p dir arq; do
+            echo "  projeto '$p', subido em $dir com $(basename "$arq")" >&2
+        done
+        echo "Rode o testes.sh nessa pasta (com COMPOSE_FILE=<arquivo>, se não for o docker-compose.yml)," >&2
+        echo "ou derrube aquele sistema e suba este: docker compose up -d --wait" >&2
+    else
+        echo "Suba o sistema com: docker compose up -d --wait   (ou rode ./testes.sh --reiniciar)" >&2
+    fi
+    exit 1
 fi
 
 curl -sf "$IMDTRAVEL/health" >/dev/null || {

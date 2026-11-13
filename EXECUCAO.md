@@ -58,9 +58,9 @@ Desktop para o modo "Windows containers".
 ## 2. Subir o sistema
 
 ```
-git clone https://github.com/gibeonufrn/projeto-tolerancia.git
-cd projeto-tolerancia
-docker compose -f docker-compose.hub.yml up -d --wait
+git clone <url-do-repositório> imdtravel
+cd imdtravel
+docker compose up -d --build --wait
 ```
 
 - `--build` compila os quatro serviços. **A primeira vez leva alguns minutos** (baixa as
@@ -68,6 +68,15 @@ docker compose -f docker-compose.hub.yml up -d --wait
 - `--wait` só devolve o terminal quando os quatro estão saudáveis.
 - Sem `-d`, os logs ficam presos no terminal; `Ctrl+C` para tudo.
 
+### 2.b Com as imagens prontas do Docker Hub (quem só vai usar)
+
+```
+mkdir imdtravel && cd imdtravel
+```
+Dentro de um clone do repositório, o equivalente é:
+```
+docker compose -f docker-compose.hub.yml up -d --wait
+```
 
 ### Conferir que subiu
 

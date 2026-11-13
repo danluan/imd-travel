@@ -190,17 +190,22 @@ então depois de umas vinte execuções não sobra par intacto e a seção 6 é 
 | `IMDTRAVEL` | O IMDTravel está noutro endereço | `IMDTRAVEL=http://192.168.0.10:8080 ./testes.sh` |
 | `COMPOSE_FILE` | O sistema foi subido com outro arquivo de compose | `COMPOSE_FILE=docker-compose.hub.yml ./testes.sh` |
 
-**Com as imagens do Docker Hub:** se você subiu o sistema com
-`docker compose -f docker-compose.hub.yml up`, rode o script com
+**Com as imagens do Docker Hub:** numa pasta que tem só o `docker-compose.hub.yml` (sem
+`docker-compose.yml`), o script usa esse arquivo sozinho: basta `./testes.sh`. Num clone do
+repositório, onde os dois arquivos existem, indique o do Hub com
 `COMPOSE_FILE=docker-compose.hub.yml ./testes.sh`. Assim o `--reiniciar` também usa as
-imagens do Hub em vez de reconstruir a partir do código. Numa pasta com só o compose do
-Hub (renomeado para `docker-compose.yml`), basta copiar o `testes.sh` para lá e rodar
-normalmente.
+imagens do Hub em vez de reconstruir a partir do código.
+
+**Rode o script na pasta em que o sistema foi subido.** O IMDTravel é acessado pela porta,
+mas os outros três são acessados por `docker compose exec`, que só enxerga os containers
+do projeto compose da pasta atual. Se o sistema no ar for de outra pasta, o script para
+antes de testar e diz qual projeto está no ar e onde ele foi subido.
 
 ### Problemas comuns
 
 | Sintoma | Solução |
 |---|---|
+| `Serviços do projeto compose '...' que não estão no ar` | O sistema no ar foi subido noutra pasta ou com outro arquivo de compose; a mensagem diz qual. Rode o script naquela pasta, ou derrube aquele sistema e suba este. |
 | `IMDTravel não responde em http://localhost:8080/health` | O sistema não está no ar: `docker compose up -d --wait`, ou rode com `--reiniciar`. |
 | `Permission denied` | `chmod +x testes.sh` |
 | `falta o comando: jq` | Instale o `jq` (veja [o que instalar](EXECUCAO.md#1-o-que-instalar)). |

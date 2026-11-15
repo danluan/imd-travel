@@ -4,7 +4,7 @@
 #
 # Faz requisições reais ao POST /buyTicket e ao GET /sales e confere o resultado
 # contra o estoque do AirlinesHub e os pontos do Fidelity. Não é o roteiro de
-# observação (observacao.sh): aqui só se confere que o sistema faz o que a
+# observação, aqui só se confere que o sistema faz o que a
 # especificação pede quando tudo está sadio, mais um caso de falha opcional.
 #
 # Uso:

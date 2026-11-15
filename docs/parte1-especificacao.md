@@ -162,8 +162,8 @@ A lista abaixo não é uma sugestão de simplicidade: é um requisito. A Parte 2
 
 - Tag BASELINE marcando esta versão. Ela precisa continuar existindo e funcionando depois da Parte 2 — a comparação depende disso.
 
-- README com: como subir, como rodar o roteiro, o catálogo de voos usado e onde fica cada serviço no repositório.
+- README com: Explicação sobre a Linguagem e Framework utilizados, nomes dos membros da equipe, descrição dos testes realizados, o catálogo de voos usado.
 
-- Evidências dos testes e uma pasta /tests
+- Evidências dos testes e uma pasta /tests (arquivos de log, mensagens do terminal, etc.)
 
 - Todos os membros com commits distribuídos ao longo do período.

@@ -1,0 +1,7 @@
+target/
+data/
+app.log
+.idea/
+*.iml
+docker-compose*.yml
+.git

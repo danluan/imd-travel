@@ -1,4 +1,35 @@
+# Compose de DESENVOLVIMENTO (não é o de entrega): sobe só as três dependências,
+# com as portas expostas, para rodar o IMDTravel fora do container (./mvnw spring-boot:run).
+# As variáveis são as mesmas do docker-compose.hub.yml; sem elas as imagens não sobem.
+# Valores entre aspas: sem elas o YAML lê 2026-12-01 como data e o AirlinesHub não sobe.
 services:
-  airlineshub: { image: gibeonufrn/imdtravel-airlineshub:baseline, ports: ["8081:8080"] }
-  exchange:    { image: gibeonufrn/imdtravel-exchange:baseline,    ports: ["8082:8080"] }
-  fidelity:    { image: gibeonufrn/imdtravel-fidelity:baseline,    ports: ["8083:8080"] }
+  airlineshub:
+    image: gibeonufrn/imdtravel-airlineshub:baseline
+    ports: ["8081:8080"]
+    environment:
+      PORT: "8080"
+      CATALOG_FLIGHTS: "IMD100,IMD200,IMD300"
+      CATALOG_BASE_PRICES: "350.50,420.50,510.50"
+      CATALOG_PRICE_STEP_PER_DAY: "12.25"
+      CATALOG_START_DATE: "2026-12-01"
+      CATALOG_DAYS: "7"
+      CATALOG_SEATS: "20"
+      SELL_MIN_MS: "300"
+      SELL_MAX_MS: "900"
+
+  exchange:
+    image: gibeonufrn/imdtravel-exchange:baseline
+    ports: ["8082:8080"]
+    environment:
+      PORT: "8080"
+      EXCHANGE_INITIAL_RATE: "5.50"
+      EXCHANGE_TICK_S: "10"
+      EXCHANGE_MAX_STEP_PCT: "0.3"
+      EXCHANGE_MIN: "5.00"
+      EXCHANGE_MAX: "6.00"
+
+  fidelity:
+    image: gibeonufrn/imdtravel-fidelity:baseline
+    ports: ["8083:8080"]
+    environment:
+      PORT: "8080"

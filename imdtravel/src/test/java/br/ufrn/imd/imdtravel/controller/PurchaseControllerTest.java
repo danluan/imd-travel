@@ -14,17 +14,21 @@ import java.math.BigDecimal;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.RestClientException;
 
 import br.ufrn.imd.imdtravel.controller.dto.BuyTicketResponse;
+import br.ufrn.imd.imdtravel.obs.CorrelationIdFilter;
+import br.ufrn.imd.imdtravel.obs.JsonLogger;
 import br.ufrn.imd.imdtravel.service.PurchaseService;
 import br.ufrn.imd.imdtravel.service.exception.FlightNotFoundException;
 import br.ufrn.imd.imdtravel.service.exception.SoldOutException;
 
 @WebMvcTest(PurchaseController.class)
+@Import({CorrelationIdFilter.class, JsonLogger.class, ApiExceptionHandler.class})
 class PurchaseControllerTest {
 
     private static final String BODY_OK =
@@ -126,5 +130,39 @@ class PurchaseControllerTest {
         mvc.perform(post("/buyTicket").contentType(MediaType.APPLICATION_JSON).content(BODY_OK))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.error").value("internal-error"));
+    }
+
+    @Test
+    void geraCorrelationIdQuandoAusente() throws Exception {
+        when(purchaseService.buy(anyString(), anyString(), anyString(), anyString()))
+                .thenReturn(resposta());
+
+        String cid = mvc.perform(post("/buyTicket").contentType(MediaType.APPLICATION_JSON).content(BODY_OK))
+                .andExpect(status().isCreated())
+                .andReturn().getResponse().getHeader("X-Correlation-Id");
+
+        org.assertj.core.api.Assertions.assertThat(java.util.UUID.fromString(cid)).isNotNull();
+        verify(purchaseService).buy("IMD100", "2026-12-01", "ana", cid);
+    }
+
+    @Test
+    void correlationIdVoltaTambemNoErro500() throws Exception {
+        when(purchaseService.buy(anyString(), anyString(), anyString(), anyString()))
+                .thenThrow(new RestClientException("fora do ar"));
+
+        mvc.perform(post("/buyTicket")
+                        .header("X-Correlation-Id", "cid-500")
+                        .contentType(MediaType.APPLICATION_JSON).content(BODY_OK))
+                .andExpect(status().isInternalServerError())
+                .andExpect(header().string("X-Correlation-Id", "cid-500"));
+    }
+
+    @Test
+    void correlationIdVoltaTambemNo400() throws Exception {
+        mvc.perform(post("/buyTicket")
+                        .header("X-Correlation-Id", "cid-400")
+                        .contentType(MediaType.APPLICATION_JSON).content("{\"flight\":"))
+                .andExpect(status().isBadRequest())
+                .andExpect(header().string("X-Correlation-Id", "cid-400"));
     }
 }

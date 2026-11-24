@@ -18,6 +18,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(SalesController.class)
+@org.springframework.context.annotation.Import(br.ufrn.imd.imdtravel.obs.JsonLogger.class)
 class SalesControllerTest {
 
     @Autowired

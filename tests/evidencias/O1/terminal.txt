@@ -1,0 +1,25 @@
+##### O1  2026-11-24T01:47:34Z
+== estado limpo: docker compose down -v + up (build)
+airlineshub Up 11 seconds (healthy)
+exchange Up 11 seconds (healthy)
+fidelity Up 11 seconds (healthy)
+imdtravel Up 5 seconds (healthy)
+== O1: 50 compras sequenciais em 5 pares (10 por par)
+requisições: 50
+  status 201: 50
+  tempo(s): min=0.329866 p50=0.619084 p95=0.892940 max=0.986649
+auditoria 2026-11-24T01:48:19Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-01             10     10      10    3500      3500  ok
+IMD100 2026-12-02             10     10      10    3620      3620  ok
+IMD100 2026-12-03             10     10      10    3750      3750  ok
+IMD200 2026-12-01             10     10      10    4200      4200  ok
+IMD200 2026-12-02             10     10      10    4320      4320  ok
+total: consumidos=50 sales=50  diferença (assentos sem venda registrada)=0
+logs: 303 linhas do imdtravel em logs-imdtravel.jsonl
+== devolvendo os serviços ao normal
+airlineshub Up 46 seconds (healthy)
+exchange Up 46 seconds (healthy)
+fidelity Up 46 seconds (healthy)
+imdtravel Up 40 seconds (healthy)
+##### O1 terminou 2026-11-24T01:48:22Z

@@ -1,55 +1,62 @@
-# IMDTravel — Tolerância a Falhas (DIMAp/UFRN)
+# IMDTravel — Parte 1 (BASELINE)
 
-Projeto da disciplina de Tolerância a Falhas do DIMAp/UFRN: um sistema didático de venda
-de passagens aéreas, construído para ser derrubado de propósito e medido.
+Projeto da disciplina de Tolerância a Falhas (DIMAp/UFRN, 2026.2). Implementamos o **IMDTravel**,
+que orquestra a compra de passagens chamando AirlinesHub, Exchange e Fidelity (imagens do professor).
+Na Parte 1 não há tolerância a falhas: se uma dependência falha, a compra devolve `500`.
 
-## O sistema
+O enunciado original está em [README-ORIENTAÇÕES.md](README-ORIENTAÇÕES.md) e em `docs/`.
 
-Um cliente pede uma compra ao **IMDTravel**, que orquestra quatro chamadas síncronas, em
-ordem obrigatória, a três serviços de dependência:
+## Equipe
+
+* DANIEL LUAN LOURENCO DE LIMA
+* VINICIUS DANTAS RODRIGUES 
+
+## Linguagem e framework
+
+- **Java 21, Spring Boot 3.4 e Maven.** O código fica em `imdtravel/`, organizado em camadas MVC.
+- **Persistência:** SQLite em `/data/sales.db`, num volume Docker nomeado.
+- **Observabilidade:** log JSON (`ts, svc, cid, event, ms`), `X-Correlation-Id` propagado e `/health` com verificação real.
+
+## Como rodar
 
 ```
-cliente ──POST /buyTicket──▶ IMDTravel ──1. GET  /flight ──▶ AirlinesHub   preço e assentos
-                                │      ──2. GET  /convert──▶ Exchange      taxa de câmbio
-                                │      ──3. POST /sell   ──▶ AirlinesHub   consome o assento
-                                │      ──4. POST /bonus  ──▶ Fidelity      credita os pontos
-                                ▼
-                     registro local de vendas (GET /sales)
+docker compose up -d --build --wait    # sobe os 4 serviços (só a porta 8080 fica exposta)
+./testes.sh                            # verificações do professor
+docker compose down -v                 # derruba tudo e apaga as vendas
 ```
 
-| Serviço | Papel |
+## Testes realizados
+
+| Teste | Resultado |
 |---|---|
-| **IMDTravel** | Orquestrador: recebe a compra, faz as quatro chamadas e registra a venda. |
-| **AirlinesHub** | Mantém o estoque de assentos por voo e dia. É o único estado que importa. |
-| **Exchange** | Fornece a taxa de câmbio, que varia devagar ao longo do tempo. |
-| **Fidelity** | Acumula pontos de fidelidade por usuário. |
+| Unitários (JUnit) | 44/44 |
+| `./testes.sh` | 40/40 |
+| `./testes.sh --com-falhas` | 43/43 |
+| Roteiro de observação O1–O8 (`./tests/observar.sh`) | Resumo abaixo |
 
-Cada serviço roda no seu próprio container, e todos sobem juntos com Docker Compose.
-Os serviços são escritos em Java com Spring Boot.
-
-## Esta parte: a linha de base
-
-Este repositório corresponde à **Parte 1** do projeto: a versão básica do sistema,
-instrumentada para ser observada e **sem nenhum mecanismo de tolerância a falhas**.
-
-A ausência de proteção não é descuido, é o requisito!
-
-
-## O que deve ser feito?
-
-Nesta parte, a equipe deve implementar por conta própria apenas o serviço IMDTravel. Os demais 
-serviços devem ser considerados como serviços externos ("caixas-pretas"). A equipe pode usar a linguagem 
-e framework que desejar. A implementação do IMDTravel deve realizar as requisições aos demais serviços através dos containers docker
-e **NÃO** deve implementar nenhuma estratégia de Tolerância a Falhas.
-
-Entre as imagens docker publicadas já existe um dele com o serviço IMDTravel de referência. Use este apenas como testes da sua infraestrutura e também para servir como referência para sua implementação.
-
-A versão entregue fica marcada com a tag **`BASELINE`**.
-
-## Documentação
-
-| Documento | Conteúdo |
+| Cenário | O que observamos |
 |---|---|
-| [Especificação da Parte 1](docs/parte1-especificacao.md) | Requisitos: os serviços, a instrumentação, o roteiro de observação e a entrega. **É a fonte da verdade.** |
-| [Como executar](EXECUCAO.md) | O que instalar, como subir e parar os serviços, o catálogo e a configuração. |
-| [Como testar](TESTES.md) | Testes manuais com `curl`, o script `testes.sh` (o que verifica, como ler o resultado) e os testes unitários. |
+| O1: 50 compras sequenciais | Assentos, vendas e bônus batem: 50 de cada |
+| O2: 60 compras concorrentes no mesmo par | 20 × `201` e 40 × `409`; o estoque não fica negativo |
+| O3: Fidelity parado | `500`, mas o assento já foi consumido e a venda não é registrada |
+| O4: Fidelity congelado | A compra fica pendurada sem resposta; só conclui quando o Fidelity volta |
+| O5 e O6: Exchange ou AirlinesHub parados | `500` imediato e nenhum assento perdido |
+| O7: IMDTravel morto durante a carga | 20 assentos consumidos sem venda registrada |
+| O8: AirlinesHub reiniciado | O estoque volta a 20, mas o `/sales` mantém as vendas |
+
+Os detalhes estão em [tests/README.md](tests/README.md), as evidências em `tests/evidencias/` e a
+revisão contra a spec §4 em [tests/revisao-spec4.md](tests/revisao-spec4.md).
+
+## Catálogo de voos
+
+Os valores vêm do `docker-compose.yml`:
+
+| Item | Valor |
+|---|---|
+| Voos | IMD100, IMD200, IMD300 |
+| Preço base (USD) | 350,50 · 420,50 · 510,50 |
+| Acréscimo por dia | 12,25 USD |
+| Datas | 2026-12-01 a 2026-12-07 (7 dias) |
+| Assentos por voo e dia | 20 |
+| Câmbio inicial | 5,50 (varia até ±0,3% a cada 10 s, entre 5,00 e 6,00) |
+ 

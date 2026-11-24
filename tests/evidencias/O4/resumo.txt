@@ -1,0 +1,13 @@
+unpause em t=180s
+A:
+requisições: 1
+  status 000: 1
+  tempo(s): min=180.001295 p50=180.001295 p95=180.001295 max=180.001295
+B:
+requisições: 1
+  status 201: 1
+  tempo(s): min=180.312414 p50=180.312414 p95=180.312414 max=180.312414
+auditoria 2026-11-24T01:56:42Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-02              2      2       2     724       724  ok
+total: consumidos=2 sales=2  diferença (assentos sem venda registrada)=0

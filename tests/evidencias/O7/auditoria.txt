@@ -1,0 +1,7 @@
+auditoria 2026-11-24T01:52:01Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-05             12      7       7    2793      2793  INCONSISTENTE (assentos perdidos: 12-7)
+IMD200 2026-12-05             12      8       8    3752      3752  INCONSISTENTE (assentos perdidos: 12-8)
+IMD300 2026-12-05             12      7       7    3913      3913  INCONSISTENTE (assentos perdidos: 12-7)
+IMD100 2026-12-06             12      6       6    2466      2466  INCONSISTENTE (assentos perdidos: 12-6)
+total: consumidos=48 sales=28  diferença (assentos sem venda registrada)=20

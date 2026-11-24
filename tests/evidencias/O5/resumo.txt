@@ -1,0 +1,14 @@
+requisições: 3
+  status 500: 3
+  tempo(s): min=0.005648 p50=0.005750 p95=0.100023 max=0.100023
+O5-1	500	0.100023	{"error":"internal-error"} 
+O5-2	500	0.005648	{"error":"internal-error"} 
+O5-3	500	0.005750	{"error":"internal-error"} 
+recuperação:
+  tentativa 1, 0s depois do start: status 500
+  tentativa 2, 6s depois do start: status 201
+primeiro 201 após 6s (tentativa 2)
+auditoria 2026-11-24T01:57:10Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-03              1      1       1     375       375  ok
+total: consumidos=1 sales=1  diferença (assentos sem venda registrada)=0

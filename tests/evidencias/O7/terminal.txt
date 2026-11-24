@@ -1,0 +1,35 @@
+##### O7  2026-11-24T01:51:40Z
+== estado limpo: docker compose down -v + up (sembuild)
+airlineshub Up 11 seconds (healthy)
+exchange Up 11 seconds (healthy)
+fidelity Up 11 seconds (healthy)
+imdtravel Up 5 seconds (healthy)
+== O7: rajada de 60 compras (20 em paralelo); docker compose kill imdtravel após 2s
+kill em 01:51:55
+rajada terminou; clientes (status 000 = conexão perdida ou recusada):
+requisições: 60
+  status 000: 32
+  status 201: 28
+  tempo(s): min=0.000187 p50=0.542863 p95=1.694368 max=1.718061
+  rc do curl 0: 28
+  rc do curl 52: 21
+  rc do curl 56: 11
+== subindo o imdtravel de novo (up -d --wait)
+airlineshub Up 19 seconds (healthy)
+exchange Up 19 seconds (healthy)
+fidelity Up 19 seconds (healthy)
+imdtravel Up 5 seconds (healthy)
+auditoria 2026-11-24T01:52:01Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-05             12      7       7    2793      2793  INCONSISTENTE (assentos perdidos: 12-7)
+IMD200 2026-12-05             12      8       8    3752      3752  INCONSISTENTE (assentos perdidos: 12-8)
+IMD300 2026-12-05             12      7       7    3913      3913  INCONSISTENTE (assentos perdidos: 12-7)
+IMD100 2026-12-06             12      6       6    2466      2466  INCONSISTENTE (assentos perdidos: 12-6)
+total: consumidos=48 sales=28  diferença (assentos sem venda registrada)=20
+logs: 232 linhas do imdtravel em logs-imdtravel.jsonl
+== devolvendo os serviços ao normal
+airlineshub Up 22 seconds (healthy)
+exchange Up 22 seconds (healthy)
+fidelity Up 22 seconds (healthy)
+imdtravel Up 7 seconds (healthy)
+##### O7 terminou 2026-11-24T01:52:04Z

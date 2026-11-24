@@ -1,0 +1,4 @@
+auditoria 2026-11-24T01:48:43Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD300 2026-12-01             20     20      20   10200     10200  ok
+total: consumidos=20 sales=20  diferença (assentos sem venda registrada)=0

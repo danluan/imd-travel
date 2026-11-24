@@ -1,0 +1,85 @@
+imdtravel-1  | {"ts":"2026-11-24T01:53:33.580160544Z","svc":"imdtravel","cid":null,"event":"app.iniciada","ms":0}
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.209860607Z","svc":"imdtravel","cid":"O4-A","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.209861218Z","svc":"imdtravel","cid":"O4-B","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.300391692Z","svc":"imdtravel","cid":"O4-A","event":"chamada.concluida","ms":44,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.300401527Z","svc":"imdtravel","cid":"O4-B","event":"chamada.concluida","ms":44,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.328984343Z","svc":"imdtravel","cid":"O4-B","event":"chamada.concluida","ms":23,"dest":"exchange","method":"GET","path":"/convert","status":200}
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.328984430Z","svc":"imdtravel","cid":"O4-A","event":"chamada.concluida","ms":23,"dest":"exchange","method":"GET","path":"/convert","status":200}
+exchange-1   | 
+airlineshub-1  | 
+airlineshub-1  |   .   ____          _            __ _ _
+exchange-1     |   .   ____          _            __ _ _
+exchange-1     |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+exchange-1     | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+exchange-1     |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+exchange-1     |   '  |____| .__|_| |_|_| |_\__, | / / / /
+exchange-1     |  =========|_|==============|___/=/_/_/_/
+airlineshub-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+airlineshub-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+airlineshub-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+airlineshub-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+airlineshub-1  |  =========|_|==============|___/=/_/_/_/
+airlineshub-1  | 
+airlineshub-1  |  :: Spring Boot ::                (v3.4.5)
+airlineshub-1  | 
+airlineshub-1  | 2026-11-24T01:53:26.414Z  INFO 1 --- [airlineshub] [           main] b.u.i.a.AirlinesHubApplication           : Starting AirlinesHubApplication v1.0.0 using Java 21.0.13 with PID 1 (/app/app.jar started by root in /app)
+airlineshub-1  | 2026-11-24T01:53:26.416Z  INFO 1 --- [airlineshub] [           main] b.u.i.a.AirlinesHubApplication           : No active profile set, falling back to 1 default profile: "default"
+airlineshub-1  | 2026-11-24T01:53:27.062Z  INFO 1 --- [airlineshub] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+airlineshub-1  | 2026-11-24T01:53:27.069Z  INFO 1 --- [airlineshub] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+airlineshub-1  | 2026-11-24T01:53:27.069Z  INFO 1 --- [airlineshub] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+airlineshub-1  | 2026-11-24T01:53:27.082Z  INFO 1 --- [airlineshub] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+airlineshub-1  | 2026-11-24T01:53:27.083Z  INFO 1 --- [airlineshub] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 627 ms
+airlineshub-1  | 2026-11-24T01:53:27.310Z  INFO 1 --- [airlineshub] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+airlineshub-1  | 2026-11-24T01:53:27.322Z  INFO 1 --- [airlineshub] [           main] b.u.i.a.AirlinesHubApplication           : Started AirlinesHubApplication in 1.202 seconds (process running for 1.441)
+airlineshub-1  | 2026-11-24T01:53:30.933Z  INFO 1 --- [airlineshub] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+airlineshub-1  | 2026-11-24T01:53:30.933Z  INFO 1 --- [airlineshub] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+airlineshub-1  | 2026-11-24T01:53:30.933Z  INFO 1 --- [airlineshub] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+imdtravel-1  | {"ts":"2026-11-24T01:53:37.844979076Z","svc":"imdtravel","cid":"O4-B","event":"chamada.concluida","ms":511,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+imdtravel-1    | {"ts":"2026-11-24T01:53:37.862729736Z","svc":"imdtravel","cid":"O4-A","event":"chamada.concluida","ms":529,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+imdtravel-1    | {"ts":"2026-11-24T01:53:47.212943986Z","svc":"imdtravel","cid":"1628465d-b1ca-496a-80f9-11a94c46b93d","event":"requisicao.recebida","ms":0,"method":"GET","path":"/sales"}
+imdtravel-1    | {"ts":"2026-11-24T01:53:47.271234276Z","svc":"imdtravel","cid":"1628465d-b1ca-496a-80f9-11a94c46b93d","event":"resposta.enviada","ms":58,"method":"GET","path":"/sales","status":200}
+imdtravel-1    | {"ts":"2026-11-24T01:53:47.344747708Z","svc":"imdtravel","cid":"cedeb4e8-b3f4-4fac-b1fd-3bda6404f15f","event":"requisicao.recebida","ms":0,"method":"GET","path":"/sales"}
+exchange-1     | 
+exchange-1     |  :: Spring Boot ::                (v3.4.5)
+exchange-1     | 
+exchange-1     | 2026-11-24T01:53:26.595Z  INFO 1 --- [exchange] [           main] b.u.i.exchange.ExchangeApplication       : Starting ExchangeApplication v1.0.0 using Java 21.0.13 with PID 1 (/app/app.jar started by root in /app)
+exchange-1     | 2026-11-24T01:53:26.597Z  INFO 1 --- [exchange] [           main] b.u.i.exchange.ExchangeApplication       : No active profile set, falling back to 1 default profile: "default"
+exchange-1     | 2026-11-24T01:53:27.194Z  INFO 1 --- [exchange] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+exchange-1     | 2026-11-24T01:53:27.204Z  INFO 1 --- [exchange] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+exchange-1     | 2026-11-24T01:53:27.205Z  INFO 1 --- [exchange] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+exchange-1     | 2026-11-24T01:53:27.224Z  INFO 1 --- [exchange] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+exchange-1     | 2026-11-24T01:53:27.225Z  INFO 1 --- [exchange] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 591 ms
+exchange-1     | 2026-11-24T01:53:27.421Z  INFO 1 --- [exchange] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+exchange-1     | 2026-11-24T01:53:27.427Z  INFO 1 --- [exchange] [           main] b.u.i.exchange.ExchangeApplication       : Started ExchangeApplication in 1.139 seconds (process running for 1.431)
+exchange-1     | 2026-11-24T01:53:31.043Z  INFO 1 --- [exchange] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+exchange-1     | 2026-11-24T01:53:31.043Z  INFO 1 --- [exchange] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+exchange-1     | 2026-11-24T01:53:31.044Z  INFO 1 --- [exchange] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+imdtravel-1    | {"ts":"2026-11-24T01:53:47.347368005Z","svc":"imdtravel","cid":"cedeb4e8-b3f4-4fac-b1fd-3bda6404f15f","event":"resposta.enviada","ms":2,"method":"GET","path":"/sales","status":200}
+fidelity-1     | 
+fidelity-1     |   .   ____          _            __ _ _
+fidelity-1     |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+fidelity-1     | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+fidelity-1     |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+imdtravel-1    | {"ts":"2026-11-24T01:56:37.289846196Z","svc":"imdtravel","cid":"O4-A","event":"chamada.concluida","ms":179426,"dest":"fidelity","method":"POST","path":"/bonus","status":201}
+imdtravel-1    | {"ts":"2026-11-24T01:56:37.289892990Z","svc":"imdtravel","cid":"O4-B","event":"chamada.concluida","ms":179443,"dest":"fidelity","method":"POST","path":"/bonus","status":201}
+imdtravel-1    | {"ts":"2026-11-24T01:56:37.420452119Z","svc":"imdtravel","cid":"O4-A","event":"resposta.enviada","ms":180210,"method":"POST","path":"/buyTicket","status":201}
+imdtravel-1    | {"ts":"2026-11-24T01:56:37.524726156Z","svc":"imdtravel","cid":"O4-B","event":"resposta.enviada","ms":180314,"method":"POST","path":"/buyTicket","status":201}
+imdtravel-1    | {"ts":"2026-11-24T01:56:42.546180504Z","svc":"imdtravel","cid":"d0798e89-cda4-49dc-b56e-e7dda7ac0706","event":"requisicao.recebida","ms":0,"method":"GET","path":"/sales"}
+imdtravel-1    | {"ts":"2026-11-24T01:56:42.550296343Z","svc":"imdtravel","cid":"d0798e89-cda4-49dc-b56e-e7dda7ac0706","event":"resposta.enviada","ms":4,"method":"GET","path":"/sales","status":200}
+fidelity-1     |   '  |____| .__|_| |_|_| |_\__, | / / / /
+fidelity-1     |  =========|_|==============|___/=/_/_/_/
+fidelity-1     | 
+fidelity-1     |  :: Spring Boot ::                (v3.4.5)
+fidelity-1     | 
+fidelity-1     | 2026-11-24T01:53:26.249Z  INFO 1 --- [fidelity] [           main] b.u.i.fidelity.FidelityApplication       : Starting FidelityApplication v1.0.0 using Java 21.0.13 with PID 1 (/app/app.jar started by root in /app)
+fidelity-1     | 2026-11-24T01:53:26.251Z  INFO 1 --- [fidelity] [           main] b.u.i.fidelity.FidelityApplication       : No active profile set, falling back to 1 default profile: "default"
+fidelity-1     | 2026-11-24T01:53:26.958Z  INFO 1 --- [fidelity] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+fidelity-1     | 2026-11-24T01:53:26.966Z  INFO 1 --- [fidelity] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+fidelity-1     | 2026-11-24T01:53:26.966Z  INFO 1 --- [fidelity] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.40]
+fidelity-1     | 2026-11-24T01:53:26.989Z  INFO 1 --- [fidelity] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+fidelity-1     | 2026-11-24T01:53:26.990Z  INFO 1 --- [fidelity] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 705 ms
+fidelity-1     | 2026-11-24T01:53:27.189Z  INFO 1 --- [fidelity] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+fidelity-1     | 2026-11-24T01:53:27.200Z  INFO 1 --- [fidelity] [           main] b.u.i.fidelity.FidelityApplication       : Started FidelityApplication in 1.197 seconds (process running for 1.413)
+fidelity-1     | 2026-11-24T01:53:30.833Z  INFO 1 --- [fidelity] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+fidelity-1     | 2026-11-24T01:53:30.833Z  INFO 1 --- [fidelity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+fidelity-1     | 2026-11-24T01:53:30.833Z  INFO 1 --- [fidelity] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms

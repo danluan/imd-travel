@@ -1,0 +1,28 @@
+##### O6  2026-11-24T01:57:12Z
+== estado limpo: docker compose down -v + up (sembuild)
+airlineshub Up 11 seconds (healthy)
+exchange Up 11 seconds (healthy)
+fidelity Up 11 seconds (healthy)
+imdtravel Up 5 seconds (healthy)
+== O6: docker compose stop airlineshub; 3 compras
+requisições: 3
+  status 500: 3
+  tempo(s): min=0.003404 p50=0.004065 p95=0.065820 max=0.065820
+O6-1	500	0.065820	{"error":"internal-error"} 
+O6-2	500	0.004065	{"error":"internal-error"} 
+O6-3	500	0.003404	{"error":"internal-error"} 
+recuperação:
+  tentativa 1, 0s depois do start: status 500
+  tentativa 2, 6s depois do start: status 201
+primeiro 201 após 6s (tentativa 2)
+auditoria 2026-11-24T01:57:37Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-04              1      1       1     387       387  ok
+total: consumidos=1 sales=1  diferença (assentos sem venda registrada)=0
+logs: 25 linhas do imdtravel em logs-imdtravel.jsonl
+== devolvendo os serviços ao normal
+airlineshub Up 14 seconds (healthy)
+exchange Up 25 seconds (healthy)
+fidelity Up 25 seconds (healthy)
+imdtravel Up 20 seconds (healthy)
+##### O6 terminou 2026-11-24T01:57:39Z

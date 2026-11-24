@@ -1,0 +1,5 @@
+GET /health: 200 0.002414s
+GET /sales:  200 0.058989s
+seatsAvailable IMD100/2026-12-02 durante a pausa: 18 (consumidos: 2)
+linhas em /sales durante a pausa: 0
+/points com fidelity pausado: sem resposta em 5s

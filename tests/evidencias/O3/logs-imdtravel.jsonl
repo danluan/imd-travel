@@ -1,0 +1,44 @@
+{"ts":"2026-11-24T02:02:54.843446129Z","svc":"imdtravel","cid":null,"event":"app.iniciada","ms":0}
+{"ts":"2026-11-24T02:02:58.667089305Z","svc":"imdtravel","cid":"O3-2","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+{"ts":"2026-11-24T02:02:58.667089404Z","svc":"imdtravel","cid":"O3-1","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+{"ts":"2026-11-24T02:02:58.667391115Z","svc":"imdtravel","cid":"O3-3","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+{"ts":"2026-11-24T02:02:58.757901542Z","svc":"imdtravel","cid":"O3-2","event":"chamada.concluida","ms":43,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+{"ts":"2026-11-24T02:02:58.757923343Z","svc":"imdtravel","cid":"O3-3","event":"chamada.concluida","ms":43,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+{"ts":"2026-11-24T02:02:58.757902895Z","svc":"imdtravel","cid":"O3-1","event":"chamada.concluida","ms":43,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+{"ts":"2026-11-24T02:02:58.782404923Z","svc":"imdtravel","cid":"O3-2","event":"chamada.concluida","ms":19,"dest":"exchange","method":"GET","path":"/convert","status":200}
+{"ts":"2026-11-24T02:02:58.782405056Z","svc":"imdtravel","cid":"O3-3","event":"chamada.concluida","ms":19,"dest":"exchange","method":"GET","path":"/convert","status":200}
+{"ts":"2026-11-24T02:02:58.782405130Z","svc":"imdtravel","cid":"O3-1","event":"chamada.concluida","ms":19,"dest":"exchange","method":"GET","path":"/convert","status":200}
+{"ts":"2026-11-24T02:02:59.429754376Z","svc":"imdtravel","cid":"O3-1","event":"chamada.concluida","ms":642,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+{"ts":"2026-11-24T02:02:59.433915934Z","svc":"imdtravel","cid":"O3-1","event":"chamada.falhou","ms":2,"dest":"fidelity","method":"POST","path":"/bonus","erro":"java.net.ConnectException: null"}
+{"ts":"2026-11-24T02:02:59.434838393Z","svc":"imdtravel","cid":"O3-1","event":"erro.interno","ms":0,"erro":"org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://fidelity:8080/bonus\": null"}
+{"ts":"2026-11-24T02:02:59.436129270Z","svc":"imdtravel","cid":"O3-1","event":"resposta.enviada","ms":769,"method":"POST","path":"/buyTicket","status":500}
+{"ts":"2026-11-24T02:02:59.505850363Z","svc":"imdtravel","cid":"O3-3","event":"chamada.concluida","ms":718,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+{"ts":"2026-11-24T02:02:59.507302654Z","svc":"imdtravel","cid":"O3-3","event":"chamada.falhou","ms":0,"dest":"fidelity","method":"POST","path":"/bonus","erro":"java.net.ConnectException: null"}
+{"ts":"2026-11-24T02:02:59.507945015Z","svc":"imdtravel","cid":"O3-3","event":"erro.interno","ms":0,"erro":"org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://fidelity:8080/bonus\": null"}
+{"ts":"2026-11-24T02:02:59.508545646Z","svc":"imdtravel","cid":"O3-3","event":"resposta.enviada","ms":841,"method":"POST","path":"/buyTicket","status":500}
+{"ts":"2026-11-24T02:02:59.680243259Z","svc":"imdtravel","cid":"O3-2","event":"chamada.concluida","ms":893,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+{"ts":"2026-11-24T02:02:59.681408551Z","svc":"imdtravel","cid":"O3-2","event":"chamada.falhou","ms":0,"dest":"fidelity","method":"POST","path":"/bonus","erro":"java.net.ConnectException: null"}
+{"ts":"2026-11-24T02:02:59.681649425Z","svc":"imdtravel","cid":"O3-2","event":"erro.interno","ms":0,"erro":"org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://fidelity:8080/bonus\": null"}
+{"ts":"2026-11-24T02:02:59.682086817Z","svc":"imdtravel","cid":"O3-2","event":"resposta.enviada","ms":1015,"method":"POST","path":"/buyTicket","status":500}
+{"ts":"2026-11-24T02:03:05.880633515Z","svc":"imdtravel","cid":"O3-pos-1","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+{"ts":"2026-11-24T02:03:05.884058902Z","svc":"imdtravel","cid":"O3-pos-1","event":"chamada.concluida","ms":2,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+{"ts":"2026-11-24T02:03:05.886474791Z","svc":"imdtravel","cid":"O3-pos-1","event":"chamada.concluida","ms":1,"dest":"exchange","method":"GET","path":"/convert","status":200}
+{"ts":"2026-11-24T02:03:06.374243357Z","svc":"imdtravel","cid":"O3-pos-1","event":"chamada.concluida","ms":487,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+{"ts":"2026-11-24T02:03:06.375549165Z","svc":"imdtravel","cid":"O3-pos-1","event":"chamada.falhou","ms":0,"dest":"fidelity","method":"POST","path":"/bonus","erro":"java.net.ConnectException: null"}
+{"ts":"2026-11-24T02:03:06.375801027Z","svc":"imdtravel","cid":"O3-pos-1","event":"erro.interno","ms":0,"erro":"org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://fidelity:8080/bonus\": null"}
+{"ts":"2026-11-24T02:03:06.376320744Z","svc":"imdtravel","cid":"O3-pos-1","event":"resposta.enviada","ms":495,"method":"POST","path":"/buyTicket","status":500}
+{"ts":"2026-11-24T02:03:11.392396427Z","svc":"imdtravel","cid":"O3-pos-2","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+{"ts":"2026-11-24T02:03:11.395850615Z","svc":"imdtravel","cid":"O3-pos-2","event":"chamada.concluida","ms":2,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+{"ts":"2026-11-24T02:03:11.398003975Z","svc":"imdtravel","cid":"O3-pos-2","event":"chamada.concluida","ms":1,"dest":"exchange","method":"GET","path":"/convert","status":200}
+{"ts":"2026-11-24T02:03:12.072878282Z","svc":"imdtravel","cid":"O3-pos-2","event":"chamada.concluida","ms":674,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+{"ts":"2026-11-24T02:03:12.106356335Z","svc":"imdtravel","cid":"O3-pos-2","event":"chamada.concluida","ms":32,"dest":"fidelity","method":"POST","path":"/bonus","status":201}
+{"ts":"2026-11-24T02:03:12.249246784Z","svc":"imdtravel","cid":"O3-pos-2","event":"resposta.enviada","ms":856,"method":"POST","path":"/buyTicket","status":201}
+{"ts":"2026-11-24T02:03:12.819978523Z","svc":"imdtravel","cid":"O3-quente-1","event":"requisicao.recebida","ms":0,"method":"POST","path":"/buyTicket"}
+{"ts":"2026-11-24T02:03:12.822732995Z","svc":"imdtravel","cid":"O3-quente-1","event":"chamada.concluida","ms":1,"dest":"airlineshub","method":"GET","path":"/flight","status":200}
+{"ts":"2026-11-24T02:03:12.825068777Z","svc":"imdtravel","cid":"O3-quente-1","event":"chamada.concluida","ms":1,"dest":"exchange","method":"GET","path":"/convert","status":200}
+{"ts":"2026-11-24T02:03:13.256079539Z","svc":"imdtravel","cid":"O3-quente-1","event":"chamada.concluida","ms":430,"dest":"airlineshub","method":"POST","path":"/sell","status":201}
+{"ts":"2026-11-24T02:04:24.403093502Z","svc":"imdtravel","cid":"O3-quente-1","event":"chamada.falhou","ms":71146,"dest":"fidelity","method":"POST","path":"/bonus","erro":"java.net.ConnectException: null"}
+{"ts":"2026-11-24T02:04:24.403422524Z","svc":"imdtravel","cid":"O3-quente-1","event":"erro.interno","ms":0,"erro":"org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://fidelity:8080/bonus\": null"}
+{"ts":"2026-11-24T02:04:24.403910146Z","svc":"imdtravel","cid":"O3-quente-1","event":"resposta.enviada","ms":71583,"method":"POST","path":"/buyTicket","status":500}
+{"ts":"2026-11-24T02:04:30.742538046Z","svc":"imdtravel","cid":"4f0002b0-70cf-4ea0-9cc9-cf381f09beaa","event":"requisicao.recebida","ms":0,"method":"GET","path":"/sales"}
+{"ts":"2026-11-24T02:04:30.791756110Z","svc":"imdtravel","cid":"4f0002b0-70cf-4ea0-9cc9-cf381f09beaa","event":"resposta.enviada","ms":49,"method":"GET","path":"/sales","status":200}

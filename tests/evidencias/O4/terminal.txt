@@ -1,0 +1,35 @@
+##### O4  2026-11-24T01:53:24Z
+== estado limpo: docker compose down -v + up (sembuild)
+airlineshub Up 11 seconds (healthy)
+exchange Up 11 seconds (healthy)
+fidelity Up 11 seconds (healthy)
+imdtravel Up 5 seconds (healthy)
+== O4: docker compose pause fidelity; compra A (cliente desiste em 180s) e B (desiste em 300s)
+-- t=10s, fidelity pausado: o imdtravel ainda responde a outras rotas?
+GET /health: 200 0.002414s
+GET /sales:  200 0.058989s
+seatsAvailable IMD100/2026-12-02 durante a pausa: 18 (consumidos: 2)
+linhas em /sales durante a pausa: 0
+/points com fidelity pausado: sem resposta em 5s
+-- A desistiu em 180s (limite do cliente); a pausa continua. Agora: unpause.
+unpause em t=180s
+-- B terminou em t=180s
+A:
+requisições: 1
+  status 000: 1
+  tempo(s): min=180.001295 p50=180.001295 p95=180.001295 max=180.001295
+B:
+requisições: 1
+  status 201: 1
+  tempo(s): min=180.312414 p50=180.312414 p95=180.312414 max=180.312414
+auditoria 2026-11-24T01:56:42Z  (consumidos = 20 - seatsAvailable)
+par                    consumidos  sales  bonusN  pontos esperados  situacao
+IMD100 2026-12-02              2      2       2     724       724  ok
+total: consumidos=2 sales=2  diferença (assentos sem venda registrada)=0
+logs: 19 linhas do imdtravel em logs-imdtravel.jsonl
+== devolvendo os serviços ao normal
+airlineshub Up 3 minutes (healthy)
+exchange Up 3 minutes (healthy)
+fidelity Up 3 minutes (healthy)
+imdtravel Up 3 minutes (healthy)
+##### O4 terminou 2026-11-24T01:56:44Z
